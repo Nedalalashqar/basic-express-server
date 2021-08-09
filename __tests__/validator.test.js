@@ -15,7 +15,7 @@ describe('validator middleware', () => {
   });
 
   it('Validator Output', () => {
-    validator(req, res, next);
+    logger(req, res, next);
     expect(consoleSpy).toHaveBeenCalled();
   });
 
