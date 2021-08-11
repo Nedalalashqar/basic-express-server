@@ -7,6 +7,6 @@ module.exports =(req, res, next) =>{
         next();
     } 
     else{
-        next(`error`)
+        next(`err`)
     }
 }
