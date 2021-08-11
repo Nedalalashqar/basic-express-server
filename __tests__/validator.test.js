@@ -1,29 +1,23 @@
-const validator = require('../src/middleware/validator');
-describe('validator middleware', () => {
+'use strict';
 
-  let consoleSpy;
-  let req = {};
-  let res = {};
-  let next = jest.fn();
+const server = require('../src/server');
+// I do not have to run it
+const supertest = require('supertest');
+const request = supertest(server.app);
 
-  beforeEach(() => {
-    consoleSpy = jest.spyOn(console, 'validator').mockImplementation();
-  });
+describe('My validator middleware', () => {
 
-  afterEach(() => {
-    consoleSpy.mockRestore();
-  });
-
-  it('Validator Output', () => {
-    logger(req, res, next);
-    expect(consoleSpy).toHaveBeenCalled();
-  });
-
-  it('Moves The Next', () => {
-    validator(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
+  it('My internal server errors', async () => {
+    const response = await request.get('/person');
+    expect(response.status).toEqual(500);
 });
+
+ it('get name /person ', async () => {
+    const response = await request.get('/person?name=osama'); 
+    expect(response.status).toEqual(200);
+    expect(typeof response.body).toEqual('object');
+});
+})
 
 
 
