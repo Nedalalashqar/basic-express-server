@@ -13,7 +13,7 @@ describe('My validator middleware', () => {
 });
 
  it('get name /person ', async () => {
-    const response = await request.get('/person?name=osama'); 
+    const response = await request.get('/person?name=nedal'); 
     expect(response.status).toEqual(200);
     expect(typeof response.body).toEqual('object');
 });
