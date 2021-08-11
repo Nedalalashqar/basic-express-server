@@ -5,7 +5,7 @@ const superTest = require('supertest');
 const request = superTest(server.app);
 describe('my Server', () => {
     it('Not found request', async () => {
-      const response = await request.get('/kiraa');
+      const response = await request.get('/bad');
       expect(response.status).toEqual(404);
   });
   it('Not found person', async () => {
